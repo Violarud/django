@@ -1,0 +1,22 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %} {{title}} {% endblock %}
+
+
+{% block content %}
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert">{{ message }}</div>  <!-- Отображаем сообщения -->
+        {% endfor %}
+    {% endif %}
+
+    <form method="post">  <!-- Форма для регистрации -->
+        {% csrf_token %}  <!-- Защита от CSRF -->
+        {{ form.as_p }}  <!-- Выводим форму -->
+        <button type="submit">Зарегистрироваться</button>  <!-- Кнопка отправки -->
+    </form>
+
+
+{% endblock %}
